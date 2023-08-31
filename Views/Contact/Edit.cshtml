@@ -1,0 +1,43 @@
+﻿@model ContactModel;
+
+<form method="post" asp-action="Edit">
+    <!-- Form to submit contact edits -->
+    <div class="border p-3 mt-4" style="border-collapse: collapse; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+        <div class="row pb-2">
+            <h2 class="text-white">Edit Contact</h2> <!-- Heading for the edit contact section -->
+            <hr /> <!-- Horizontal line for separation -->
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div> <!-- Display validation errors summary -->
+        <div class="mb-3">
+            <label asp-for="FirstName"></label> <!-- Label for first name input -->
+            <input asp-for="FirstName" id="ContactBckgrndColor" class="form-control text-black" /> <!-- Input for first name -->
+            <span asp-validation-for="FirstName" class="text-danger"></span> <!-- Display validation error for first name -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName"></label> <!-- Label for last name input -->
+            <input asp-for="LastName" id="ContactBckgrndColor" class="form-control text-black" /> <!-- Input for last name -->
+            <span asp-validation-for="LastName" class="text-danger"></span> <!-- Display validation error for last name -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber"></label> <!-- Label for phone number input -->
+            <input asp-for="PhoneNumber" id="ContactBckgrndColor" class="form-control text-black" /> <!-- Input for phone number -->
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span> <!-- Display validation error for phone number -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email"></label> <!-- Label for email input -->
+            <input asp-for="Email" id="ContactBckgrndColor" class="form-control text-black" /> <!-- Input for email -->
+            <span asp-validation-for="Email" class="text-danger"></span> <!-- Display validation error for email -->
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button> <!-- Button to submit the updated contact -->
+        <a asp-controller="Contact" asp-action="Index" class="btn btn-primary">
+            Back to Contacts <!-- Button to navigate back to the main contacts list -->
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

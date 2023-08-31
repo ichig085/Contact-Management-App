@@ -1,0 +1,121 @@
+﻿@model X.PagedList.IPagedList<ContactModel>;  // Model declaration: Indicates the type of model that this view expects
+
+
+@{
+    ViewData["Title"] = "Contacts";  // Setting the page title to "Contacts"
+}
+
+<div class="container p-3">
+    <!-- Include the _Notifications partial view -->
+    <partial name="_Notifications" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex">
+                <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        Sort
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-controller="Contact" asp-action="Index" asp-route-sortBy="FirstName">First Name</a></li>
+                        <li><a class="dropdown-item" asp-controller="Contact" asp-action="Index" asp-route-sortBy="LastName">Last Name</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ml-5 mb-1 col-md-6 d-flex justify-content-end">
+                <a asp-controller="Contact" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-person-plus h5"></i>&nbsp;
+                    Create
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Display contact details in a table row -->
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td width="25%">@contact.FirstName</td>
+                    <td width="25%">@contact.LastName</td>
+                    <td width="25%">@string.Format("{0:(###) ###-####}", double.Parse(contact.PhoneNumber))</td>
+                    <td width="25%">@contact.Email</td>
+
+                    <td>
+                        <div class="w-25 btn-group" role="group">
+                            <a asp-controller="Contact" asp-action="Edit" asp-route-id="@contact.Id" class="btn btn-primary btn-sm text-nowrap"><i class="bi bi-pencil-square h6"></i></a> <!-- Button to navigate to the "Edit" action in the "Contact" controller for editing a contact -->
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="w-25 btn-group" role="group">
+                            <a asp-controller="Contact" asp-action="Delete" asp-route-id="@contact.Id" id="btn" class="btn btn-danger btn-sm text-nowrap"><i class="bi bi-trash h6"></i></a> <!-- Button to initiate the deletion of a contact by navigating to the "Delete" action in the "Contact" controller -->
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <!-- Button to reset contact data to randomly generated entries -->
+        <a class="btn btn-danger mb-3" asp-controller="Contact" asp-action="ResetContactsData">Reset with Random Generated Contacts</a>
+
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <ul class="pagination">
+                <!-- Check if there's a previous page -->
+                @if (Model.HasPreviousPage)
+                {
+                    <!-- Display a link to the previous page -->
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber - 1 })">Previous</a>
+                    </li>
+                }
+                else
+                {
+                    <!-- Display a disabled link for previous page when not applicable -->
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                }
+
+                <!-- Loop through page numbers -->
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <!-- Apply the "active" class to the current page link -->
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+
+                <!-- Check if there's a next page -->
+                @if (Model.HasNextPage)
+                {
+                    <!-- Display a link to the next page -->
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber + 1 })">Next</a>
+                    </li>
+                }
+                else
+                {
+                    <!-- Display a disabled link for next page when not applicable -->
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

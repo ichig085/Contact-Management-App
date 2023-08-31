@@ -1,0 +1,46 @@
+﻿@model ContactModel;  // Model declaration: Indicates the type of model that this view expects
+
+<!-- Form for creating a new contact, submitting to the default "Post" action -->
+<form method="post">
+    <div class="border p-3 mt-4" style="border-collapse: collapse; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+        <!-- Styling for the create form section -->
+        <div class="row pb-2">
+            <h2 class="text-white">Create Contact</h2>  <!-- Heading for the create section -->
+            <hr />  <!-- Horizontal line separator -->
+        </div>
+        <div asp-validation-summary="All" class="text-warning"></div>  <!-- Display validation summary for all errors -->
+        <!-- Input fields for contact details -->
+        <div class="mb-3">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" id="ContactBckgrndColor" class="form-control text-black" />  <!-- Input for first name -->
+            <span asp-validation-for="FirstName" class="text-warning"></span>  <!-- Display validation error message for first name -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" id="ContactBckgrndColor" class="form-control text-black" />  <!-- Input for last name -->
+            <span asp-validation-for="LastName" class="text-warning"></span>  <!-- Display validation error message for last name -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" id="ContactBckgrndColor" class="form-control text-black" />  <!-- Input for phone number -->
+            <span asp-validation-for="PhoneNumber" class="text-warning"></span>  <!-- Display validation error message for phone number -->
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" id="ContactBckgrndColor" class="form-control text-black" />  <!-- Input for email -->
+            <span asp-validation-for="Email" class="text-warning"></span>  <!-- Display validation error message for email -->
+        </div>
+
+        <!-- Create button and Back to Contacts link -->
+        <button type="submit" class="btn btn-primary">Create</button>  <!-- Button to submit the create form -->
+        <a asp-controller="Contact" asp-action="Index" class="btn btn-primary">
+            Back to Contacts
+        </a>  <!-- Link to navigate back to the contacts list -->
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" /> <!-- Include validation scripts -->
+    }
+}

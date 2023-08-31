@@ -1,0 +1,106 @@
+﻿@model X.PagedList.IPagedList<ContactModel>;  // Model declaration: Indicates the type of model that this view expects
+
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-white">Search Results:</h1>
+        </div>
+    </div>
+    <br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td width="25%">@contact.FirstName</td> <!-- Display the first name of the contact -->
+                    <td width="25%">@contact.LastName</td>  <!-- Display the last name of the contact -->
+                    <td width="25%">@String.Format("{0:(###) ###-####}", double.Parse(contact.PhoneNumber))</td> <!-- Format and display the phone number -->
+                    <td width="25%">@contact.Email</td>     <!-- Display the email of the contact -->
+
+                    <td>
+                        <div class="w-25 btn-group" role="group">
+                            <a asp-controller="Contact" asp-action="Edit" asp-route-id="@contact.Id" class="btn btn-primary btn-sm text-nowrap"><i class="bi bi-pencil-square h6"></i></a> <!-- Button to edit the contact -->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="w-25 btn-group" role="group">
+                            <a onclick="a" asp-controller="Contact" asp-action="Delete" asp-route-id="@contact.Id" id="btn" class="btn btn-danger btn-sm text-nowrap"><i class="bi bi-trash h6"></i></a> <!-- Button to delete the contact -->
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <!-- Pagination controls -->
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-primary">
+                Back to Contacts
+            </a>
+        </div>
+
+        <div class="pagination">
+            <ul class="pagination">
+                <!-- Check if there's a previous page -->
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("SearchResults", new { page = Model.PageNumber - 1, searchUserInput = ViewBag.SearchUserInput })">Previous</a>
+                    </li>
+                }
+                else
+                {
+                    <!-- Display a disabled link for previous page when not applicable -->
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                }
+
+                <!-- Loop through page numbers -->
+
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <!-- Apply the "active" class to the current page link -->
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("SearchResults", new { page = i, searchUserInput = ViewBag.SearchUserInput  })">@i</a>
+                    </li>
+                }
+
+                <!-- Check if there's a next page -->
+                @if (Model.HasNextPage)
+                {
+                    <!-- Display a link to the next page -->
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("SearchResults", new { page = Model.PageNumber + 1, searchUserInput = ViewBag.SearchUserInput })">Next</a>
+                    </li>
+                }
+                else
+                {
+                    <!-- Display a disabled link for next page when not applicable -->
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

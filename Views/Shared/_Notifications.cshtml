@@ -1,0 +1,8 @@
+﻿@if (TempData["success"] != null)
+{
+    <h2 id="message" class="text-success">@TempData["success"]</h2> // Display a success message if available in TempData
+}
+@if (TempData["delete"] != null)
+{
+    <h2 id="message" class="text-warning">@TempData["delete"]</h2> // Display a delete message if available in TempData
+}
