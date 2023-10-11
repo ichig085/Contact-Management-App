@@ -1,25 +1,49 @@
 ﻿<Properties StartupConfiguration="{2B286FC6-6E48-48BC-AF76-D718D7A65E53}|https">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ContactAppWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/chris/Desktop/ContactAppWeb/Controllers/DataResetController.cs" relfile="Controllers/DataResetController.cs" line="19" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ContactController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Contact/Index.cshtml">
     <Files>
-      <File FileName="Views/Contact/Create.cshtml" />
-      <File FileName="Controllers/ContactController.cs" Line="102" Column="50" />
+      <File FileName="Views/Contact/Create.cshtml" Line="1" Column="37" />
+      <File FileName="Controllers/ContactController.cs" Line="90" Column="10" />
       <File FileName="Program.cs" />
       <File FileName="ContactAppWeb.csproj" />
       <File FileName="Data/DataSeeder.cs" />
       <File FileName="Views/Contact/NoResultsFound.cshtml" />
-      <File FileName="Views/Contact/Index.cshtml" />
+      <File FileName="Views/Contact/Index.cshtml" Line="24" Column="19" />
       <File FileName="Views/Shared/_Notifications.cshtml" />
       <File FileName="Views/Shared/_Layout.cshtml" />
+      <File FileName="BackgroundServices/DatabaseResetService.cs" />
+      <File FileName="Models/ContactModel.cs" />
+      <File FileName="Migrations/DataContextModelSnapshot.cs" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ContactApp">
+            <Node name="ContactAppWeb">
+              <Node name="BackgroundServices" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Contact" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.ItemProperties.ContactAppWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/chris/Desktop/ContactAppWeb/Controllers/DataResetController.cs" relfile="Controllers/DataResetController.cs" line="19" column="1" />
+      <Breakpoint file="/Users/chris/Desktop/ContactAppWeb/Controllers/ContactController.cs" relfile="Controllers/ContactController.cs" line="94" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

@@ -180,7 +180,7 @@ namespace ContactAppWeb.Controllers
             _db.SaveChanges();
             TempData["delete"] = "Contact deleted successfully.";
 
-            // Redirect to the "Index" action to show the list of contacts after resetting
+            // Redirect to the "Index" action
             return RedirectToAction("Index");
         }
 
